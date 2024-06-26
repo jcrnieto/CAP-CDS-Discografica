@@ -1,0 +1,52 @@
+{
+  "name": "capCdsPruebaDiscografica",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^7",
+    "@sap/hana-client": "^2.21.26",
+    "@sap/xsenv": "^5.1.0",
+    "@sap/xssec": "^3",
+    "express": "^4",
+    "passport": "^0.7.0"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^7",
+    "@sap/eslint-plugin-cds": "^3",
+    "eslint": "^9"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "cds": {
+    "requires": {
+      "auth": "xsuaa",
+      "db": {
+        "[development]": {
+          "kind": "sqlite",
+          "credentials": {
+            "url": "db.sqlite"
+          }
+        },
+        "[production]": {
+          "kind": "hana",
+          "db": "hana",
+          "auth": "xsuaa"
+        }
+      }
+    },
+    "build": {
+      "target": "gen"
+    },
+    "hana": {
+      "deploy-format": "hdbtable"
+    },
+    "deploy": {
+      "autoUndeploy": false
+    }
+  }
+}
